@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	
+	<script>
+		function Stack(){
+			let items = [];
+			
+			//添加
+			this.push = function(element){
+				items.push(element)
+			}
+			//输出单个
+			this.peek = function(){
+				return items[items.length-1]
+			}
+			//输出全部
+			this.peekAll = function(){
+				items.forEach( function(currentValue){
+					console.log(currentValue)
+				})
+			}
+			//删除
+			this.pop = function(){
+				return items.pop()
+			}
+			//查看所有
+			this.print = function(){
+				console.log(items.toString())
+			}
+			//查看栈内数据长度
+			this.size = function(){
+				return items.length
+			}
+			
+		}
+		var stack = new Stack()
+		
+		stack.push(1)
+		stack.push(2)
+		stack.push(3)
+		stack.push(4)
+		stack.push(5)
+		
+		console.log(stack.size())
+		
+		console.log(stack)
+		console.log(stack.peek())
+		stack.peekAll()
+		
+		stack.print()
+		
+	</script>
+
+</body>
+</html>

@@ -14,11 +14,24 @@ var Grade001 = 100;
 var Grade002 = 99;
 var Grade003 = 98;
 var Grade004 = 97;
-var Grade002 = 96;
-···
+var Grade005 = 96;
+```
 
+等等等等。。。。    这个是5个人的分数，一个班有50人，如果我呀存一个院呢？一个学校。。。那要多少变量？？？  
+但是数组咋做的哩，
 
+``` JavaScript
+var Grade = [];
+var Grade[0] = 100;
+var Grade[1] = 99;
+var Grade[2] = 98;
+var Grade[3] = 97;
+var Grade[4] = 96;
 
+```
+一切尽在不言而喻之中。
+
+### 创建数组  
 
 
 
