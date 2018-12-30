@@ -7,8 +7,10 @@
 <body>
 	
 	<script>
-		function Stack(){
-			let items = [];
+		function Stack(number){
+			// let items = [];
+			
+			let items = new Array(number)
 			
 			//添加
 			this.push = function(element){
@@ -20,7 +22,7 @@
 			}
 			//输出全部
 			this.peekAll = function(){
-				items.forEach( function(currentValue){
+				items.forEach(function(currentValue){
 					console.log(currentValue)
 				})
 			}
@@ -30,7 +32,7 @@
 			}
 			//查看所有
 			this.print = function(){
-				console.log(items.toString())
+				return items.toString()
 			}
 			//查看栈内数据长度
 			this.size = function(){
@@ -38,7 +40,7 @@
 			}
 			
 		}
-		var stack = new Stack()
+		var stack = new Stack(10)
 		
 		stack.push(1)
 		stack.push(2)
@@ -52,7 +54,7 @@
 		console.log(stack.peek())
 		stack.peekAll()
 		
-		stack.print()
+		console.log(stack.print())
 		
 	</script>
 

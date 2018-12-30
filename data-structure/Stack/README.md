@@ -6,6 +6,9 @@
 --------
 
 **<font color=#FF0000>使用环境:</font>** 顺序存放，倒叙取出  
+栈本身是一种存储的数据结构  
+栈有【初始化】、【压栈】、【出栈】、【遍历】和【清空】等主要方法。  
+栈操作的是一个一个节点
 
 --------
 
@@ -97,7 +100,13 @@ stack.push(4)
 stack.push(5)
 
 //输出长度
+console.log(stack.size())
 
+//输出最后一个
+console.log(stack.peek())
+
+//输出全部
+stack.peekAll()
 ```
 
 
