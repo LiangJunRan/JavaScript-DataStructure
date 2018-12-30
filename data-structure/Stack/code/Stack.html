@@ -7,10 +7,10 @@
 <body>
 	
 	<script>
-		function Stack(number){
+		function Stack(){
 			// let items = [];
 			
-			let items = new Array(number)
+			let items = new Array()
 			
 			//添加
 			this.push = function(element){
@@ -40,7 +40,7 @@
 			}
 			
 		}
-		var stack = new Stack(10)
+		var stack = new Stack()
 		
 		stack.push(1)
 		stack.push(2)
