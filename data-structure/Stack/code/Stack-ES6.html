@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	
+	<script>
+		class Stack{
+			constructor() {
+			    this.items = [];
+			}
+			push(element){
+				this.items.push(element)
+			}
+			peek(){
+				return this.items[this.items.length-1]
+			}
+		}
+		
+		let stack = new Stack();
+		
+		stack.push(1)
+		stack.push(2)
+		
+		console.log(stack.peek())
+		
+		let _items = Symbol()
+		
+		class StackSymbol{
+			constructor() {
+				this[_items] = []
+			}
+			push(element){
+				this[_items].push(element)
+			}
+			peek(){
+				return this[_items][this[_items].length-1]
+			}
+		}
+		
+		let stackSymbol = new StackSymbol()
+		
+		stackSymbol.push(1)
+		stackSymbol.push(2)
+		stackSymbol.push(3)
+		
+		console.log(stackSymbol.peek())
+		
+		let objectSymbols = Object.getOwnPropertySymbols(stackSymbol)
+		
+		console.log(objectSymbols)
+		console.log(objectSymbols.length)	//1
+		
+		stackSymbol[objectSymbols[0]].push(4)	//
+		console.log(stackSymbol.peek())		//4
+		
+	</script>
+	
+</body>
+</html>
