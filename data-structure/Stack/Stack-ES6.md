@@ -81,3 +81,68 @@ console.log(stackSymbol.peek())		//4
 
 #### ES6中创建私有属性（二）使用WeakMap实现类。
 
+WeakMap是可以确保属性是私有的  
+
+WeakMap是可以存储键值对的，其中键是对象，值可以是任意数据类型。而且WeakMap的对象在没有其他引用是可以被当做垃圾回收的。  
+
+``` JavaScript
+
+// 声明一个WeakMap类型的变量items
+const items = new WeakMap();
+
+class StackWeakMap{
+	//在constructor中,以this(Stack类自己的引用)为键,把代表栈的数组存入items
+	constructor() {
+			items.set(this,[])
+	}
+	
+	//压栈
+	push(element){
+		let s = items.get(this)
+		s.push(element);
+	}
+	
+	//读取栈顶
+	pop(){
+		let s = items.get(this)
+		let r = s.pop()
+		return r
+	}
+}
+
+```
+
+items在Stack类中是私有属性，但是声明是在Stack外的，谁都可以动他。我们可以使用闭包将其包裹起来
+
+``` JavaScript
+
+let StackWeakMap = (functiuon(){
+	const items = new WeakMap();
+	
+	class StackWeakMap{
+		constructor() {
+				items.set(this,[])
+		}
+		
+		//压栈
+		push(element){
+			let s = items.get(this)
+			s.push(element);
+		}
+		
+		//读取栈顶
+		pop(){
+			let s = items.get(this)
+			let r = s.pop()
+			return r
+		}
+	}
+	
+	//向外暴露StackWeakMap
+	return StackWeakMap;
+})()
+
+```
+
+但是用以上方法也是有弊端的，就是扩展类无法继承私有属性。  
+至于使用哪种方法，就看具体的业务需求了。

@@ -7,6 +7,8 @@
 <body>
 	
 	<script>
+		
+		//使用ES5语法声明Stack类
 		class Stack{
 			constructor() {
 			    this.items = [];
@@ -26,6 +28,8 @@
 		
 		console.log(stack.peek())
 		
+		
+		//使用限定作用域Symbol实现类
 		let _items = Symbol()
 		
 		class StackSymbol{
@@ -55,6 +59,41 @@
 		
 		stackSymbol[objectSymbols[0]].push(4)	//
 		console.log(stackSymbol.peek())		//4
+		
+		//使用WeakMap实现类
+		
+		// 声明一个WeakMap类型的变量items
+		const items = new WeakMap();
+		
+		
+		class StackWeakMap{
+			//在constructor中,以this(Stack类自己的引用)为键,把代表栈的数组存入items
+			constructor() {
+			    items.set(this,[])
+			}
+			
+			//压栈
+			push(element){
+				let s = items.get(this)
+				s.push(element);
+			}
+			
+			//读取栈顶
+			pop(){
+				let s = items.get(this)
+				let r = s.pop()
+				return r
+			}
+			
+		}
+		
+		let stackWeakMap = new StackWeakMap()
+		
+		stackWeakMap.push(1)
+		
+		stackWeakMap.push(2)
+		
+		console.log(stackWeakMap.pop())
 		
 	</script>
 	
