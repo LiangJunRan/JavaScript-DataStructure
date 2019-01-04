@@ -7,6 +7,56 @@
 <body>
 	
 	<script>
+		function Queue(){
+			//运用数组来保存队列里的元素
+			let items = [];
+			
+			//这个方法负责往队列里添加新元素，只往队尾添加。
+			this.enqueue = function(element){
+				items.push(element)
+			}
+			
+			//删除元素，删除第一个添加进去的元素
+			this.dequeue = function(){
+				return items.shift()
+			}
+			
+			//清空元素
+			this.deleteAll = function(){
+				items = [];
+			}
+			
+			//查看队头元素
+			this.front = function(){
+				return items[0]
+			}
+			
+			//查看全部元素
+			this.print = function(){
+				console.log(items.toString())
+			}
+			
+			//查看队列内数据长度
+			this.size = function(){
+				return items.length
+			}
+			
+		}
+		
+		var queue = new Queue()
+		
+		queue.enqueue(1)
+		queue.enqueue(2)
+		queue.enqueue(3)
+		queue.enqueue(4)
+		queue.enqueue(5)
+		
+		console.log(queue.size())	//5
+		
+		console.log(queue)
+		console.log(queue.front())	//1
+		queue.print()				//1,2,3,4,5
+		
 		
 	</script>
 	
