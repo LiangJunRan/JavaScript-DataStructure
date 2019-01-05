@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>用ES6语法实现Queue类</title>
+</head>
+<body>
+	
+	<script>
+		let Queue = (function(){
+			const items = new WeakMap()
+			class Queue{
+				constructor(){
+					items.set(this,[])
+				}
+				enqueue(element){
+					let q = items.get(this);
+					q.push(element)
+				}
+				dequeue(){
+					let q = items.get(this);
+					let r = q.shift();
+					return r
+				}
+			}
+			return Queue
+		})();
+	</script>
+	
+</body>
+</html>
