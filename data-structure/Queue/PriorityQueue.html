@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>浼樺厛闃熷垪</title>
+	<title>优先队列</title>
 </head>
 <body>
 	<script>
@@ -21,9 +21,6 @@
 				
 				let added = false;
 				
-				if(!added){
-					items.push(queueElement);
-				}
 				for(let i=0;i<items.length;i++){
 					if(queueElement.priority<items[i].priority){
 						items.splice(i,0,queueElement);
@@ -31,17 +28,32 @@
 						break;
 					}
 				}
+				if(!added){
+					items.push(queueElement);
+				}
 				
 			};
 			
 			this.print = function(){
 				for(let i=0;i<items.length;i++){
-					console.log(items[i].element,items.priority)
+					console.log(items[i].element,items[i].priority)
 				}
 			}
 			
 		}
 		
+		
+		let priorityQueue = new PriorityQueue()
+		
+		priorityQueue.enqueue("AAA",2);
+		priorityQueue.enqueue("BBB",3);
+		priorityQueue.enqueue("CCC",1);
+		priorityQueue.enqueue("DDD",2);
+		
+		priorityQueue.print()	// CCC 1
+								// AAA 2
+								// DDD 2
+								// BBB 3
 	</script>
 </body>
 </html>

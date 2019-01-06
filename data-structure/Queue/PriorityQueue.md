@@ -33,7 +33,7 @@ function PriorityQueue(){
 			}
 		}
 		
-		//判断要添加的元素优先级是不是大于任何已知元素
+		//判断要添加的元素的priority是不是大于任何已知元素
 		if(!added){
 			items.push(queueElement);
 		}
@@ -45,7 +45,12 @@ function PriorityQueue(){
 			console.log(items[i].element,items.priority)
 		}
 	}
-	
 }
 
 ```
+
+PriorityQueue类需要比创建一个特殊的元素。这个元素包含了要添加到队列的元素以及其在队列中的优先值  
+
+如果队列为空，可以直接将元素入列。否则就需要比较该元素与其他元素的优先级。当找到一个比要添加的元素的priority值更大的项时，就把新元素插入到它之前，根据这个我们可以使用数组的splice方法。  
+
+具体事例在代码页有，可以查看
