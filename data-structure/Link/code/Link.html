@@ -46,18 +46,35 @@
 				
 				let nodeAll = head
 				
-				
-				
+				console.log(head)
 
 				while(nodeAll){
 					
-					console.log(nodeAll)
-					
 					if(nodeAll.element === element){
-						nodeAll.next = nodeAll.next.next
-					}else{
-						nodeAll = nodeAll.next
+						
+						var a = head
+						// a = null
+						head = head.next
+						a.next.next = null
+						console.log(head)
+						console.log(a.next)
+						return 
+					}else{						
+						if(nodeAll.next.element === element){
+							
+							console.log(nodeAll)
+							var a = nodeAll.next
+							nodeAll.next = nodeAll.next.next
+							a = null
+							console.log(a)
+							
+							return 
+							
+						}else{
+							nodeAll = nodeAll.next
+						}
 					}
+					
 				}
 				
 				return false 
@@ -106,10 +123,14 @@
 		
 		linkList.append(1)
 		linkList.append(2)
-		linkList.remove(2)
 		linkList.append(3)
 		linkList.append(4)
+		linkList.append(5)
+		linkList.append(6)
+		linkList.append(7)
+		linkList.append(8)
 		
+		linkList.remove(1)
 		console.log(linkList)
 		console.log(linkList.size())
 		linkList.print()

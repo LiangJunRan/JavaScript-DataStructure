@@ -63,6 +63,35 @@ this.append = function(element){
 
 ``` JavaScript
 
+//从列表中移除一项,输入的参数为数据.如果有要删除的则返回删除后的数据,如果没有则返回false
+this.remove = function(element){
+	
+	let nodeAll = head
+	
+	console.log(head)
 
+	while(nodeAll){
+		
+		if(nodeAll.element === element){
+			
+			var a = head
+			a = null
+			head = head.next
+			a.next.next = null
+			return 
+		}else{						
+			if(nodeAll.next.element === element){	
+				console.log(nodeAll)
+				var a = nodeAll.next
+				nodeAll.next = nodeAll.next.next
+				a = null
+				return 
+			}else{
+				nodeAll = nodeAll.next
+			}
+		}
+	}
+	return false 
+}
 
 ```
