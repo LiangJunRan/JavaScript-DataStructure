@@ -21,6 +21,48 @@
 
 ``` JavaScript
 
+function LinkedList(){
+	let Node = function(element){
+		this.element = element;
+		this.next = null; 
+	} 
+	
+	//代表链表的长度
+	let length = 0;
+	//链表的头结点
+	let head = null;
+}
+
+```
+
+#### 2.向链表尾部追加元素
+
+向链表对象的尾部添加一个元素时，可能有两个场景，一个是链表为空，添加第一个数据；另一个是链表不为空，向其追加元素。
+
+``` JavaScript
+
+this.append = function(element){
+	let node = new Node(element);
+	if(head){
+		//链表不为空
+		//那么将当前的尾结点指向新的节点，然后将尾结点移到新节点。所以我们就可以保证尾结点的下一节点一直为null。
+		tail.next = node
+		tail = node
+	}else{
+		//链表为空
+		//如果链表为空，添加第一个元素到头结点，那么head的指向就为空，这个时候头结点和尾结点应该是重合，也就是同一数据。
+		head = node;
+		tail = head;
+	}
+	length++;
+}
+
+```
+
+#### 3.从列表中移除数据
+
+``` JavaScript
+
 
 
 ```

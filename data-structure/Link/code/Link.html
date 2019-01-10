@@ -18,11 +18,101 @@
 			let length = 0;
 			//链表的头结点
 			let head = null;
+			//链表的尾结点
+			let tail = null;
 			
+			//添加数据
+			this.append = function(element){
+				let node = new Node(element);
+				if(head){
+					//链表不为空
+					tail.next = node
+					tail = node
+				}else{
+					//链表为空
+					head = node;
+					tail = head;
+				}
+				length++;
+			}
 			
+			//向特定位置添加数据
+			this.insert = function(position,element){
+				
+			}
 			
+			//从列表中移除一项,输入的参数为数据.如果有要删除的则返回删除后的数据,如果没有则返回false
+			this.remove = function(element){
+				
+				let nodeAll = head
+				
+				
+				
+
+				while(nodeAll){
+					
+					console.log(nodeAll)
+					
+					if(nodeAll.element === element){
+						nodeAll.next = nodeAll.next.next
+					}else{
+						nodeAll = nodeAll.next
+					}
+				}
+				
+				return false 
+				
+			}
+			
+			//从列表的特定位置移除一项
+			this.removeAt = function(position){
+				
+			}
+			
+			//返回元素在列表中的索引.如果列表中没有该元素就返回-1,.
+			this.indexOf = function(element){
+				
+			}
+			
+			//判断元素是否为空，如果链表中不包含任何元素,返回true,如果链表长度大于0则返回false
+			this.isEmpty = function(){
+				
+			}
+			
+			//返回链表包含的元素个数.与数组的length属性类似.
+			this.size = function(){
+				return length;
+			}
+			
+			//返回全部数据
+			this.print = function(){
+				
+				console.log(head)
+				
+				let nodeAll = head
+				
+				if(!nodeAll){
+					console.log("没有数据")
+				}
+				
+				while(nodeAll){
+					console.log(nodeAll.element)
+					nodeAll = nodeAll.next
+				}
+			}
 		}
 		
+		let linkList = new LinkedList()
+		
+		linkList.append(1)
+		linkList.append(2)
+		linkList.remove(2)
+		linkList.append(3)
+		linkList.append(4)
+		
+		console.log(linkList)
+		console.log(linkList.size())
+		linkList.print()
 	</script>
 	
 </body>
