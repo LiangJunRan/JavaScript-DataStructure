@@ -43,15 +43,10 @@
 			
 			//从列表中移除一项,输入的参数为数据.如果有要删除的则返回删除后的数据,如果没有则返回false
 			this.remove = function(element){
-				
 				let nodeAll = head
-				
 				console.log(head)
-
 				while(nodeAll){
-					
 					if(nodeAll.element === element){
-						
 						var a = head
 						// a = null
 						head = head.next
@@ -59,26 +54,20 @@
 						console.log(head)
 						console.log(a.next)
 						return 
-					}else{						
+					}else{
 						if(nodeAll.next.element === element){
-							
 							console.log(nodeAll)
 							var a = nodeAll.next
 							nodeAll.next = nodeAll.next.next
 							a = null
 							console.log(a)
-							
-							return 
-							
+							return 		
 						}else{
 							nodeAll = nodeAll.next
 						}
 					}
-					
 				}
-				
 				return false 
-				
 			}
 			
 			//从列表的特定位置移除一项
