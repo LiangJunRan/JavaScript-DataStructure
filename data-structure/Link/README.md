@@ -59,7 +59,48 @@ this.append = function(element){
 
 ```
 
-#### 3.从列表中移除数据
+#### 3.向特定位置添加
+
+``` JavaScript
+
+this.insert = function(position,element){
+	let node = new Node(element);
+	
+	//检查越界
+	if (position>-1 && position<length) {
+		
+		let current = head
+		let previous;
+		let index = 0;
+		
+		//添加到第一项
+		if(position === 0){
+			node.next = current
+			console.log(node)
+			head = node;
+			console.log(head)
+		}else{
+			while(index++<position){
+				previous = current;
+				current = previous.next
+				console.log(previous)
+				console.log(current)
+			}
+			node.next = current;
+			previous.next = node;
+		}
+							
+		length++;
+		return true
+	} else{
+		return null
+	}
+}
+
+```
+
+
+#### 4.从列表中移除数据
 
 ``` JavaScript
 
@@ -96,3 +137,61 @@ this.remove = function(element){
 
 ```
 
+#### 5.从列表的特定位置移除一项
+
+``` JavaScript
+
+this.removeAt = function(position){
+				
+	//检查越界
+	if (position>-1 && position<length) {
+		
+		let current = head
+		let previous;
+		let index = 0;
+		
+		//移除第一项
+		if(position === 0){
+			head = current.next;
+		}else{
+			while(index++<position){
+				previous = current;
+				current = previous.next
+			}
+			previous.next = current.next;
+		}
+		
+		length--;
+		
+		return current.element
+		
+	} else{
+		return null
+	}
+}
+
+```
+
+#### 6.返回元素在列表中的索引
+
+``` JavaScript
+
+//返回元素在列表中的索引.如果列表中没有该元素就返回-1,.
+this.indexOf = function(element){
+	let nodeAll = head
+	let size = -1
+	
+	if(!nodeAll){
+		return size;
+	}else{					
+		while(nodeAll){
+			size++;
+			if(nodeAll.element===element){
+				return size
+			}
+			nodeAll = nodeAll.next
+		}
+	}
+}
+
+```

@@ -22,7 +22,7 @@
 			let tail = null;
 			
 			//添加数据
-			this.append = function(element){
+			this.append = function(element){           
 				let node = new Node(element);
 				if(head){
 					//链表不为空
@@ -38,15 +38,45 @@
 			
 			//向特定位置添加数据
 			this.insert = function(position,element){
+				let node = new Node(element);
 				
+				//检查越界
+				if (position>-1 && position<length) {
+					
+					let current = head
+					let previous;
+					let index = 0;
+					
+					//添加到第一项
+					if(position === 0){
+						node.next = current
+						console.log(node)
+						head = node;
+						console.log(head)
+					}else{
+						while(index++<position){
+							previous = current;
+							current = previous.next
+							console.log(previous)
+							console.log(current)
+						}
+						node.next = current;
+						previous.next = node;
+					}
+										
+					length++;
+					return true
+				} else{
+					return null
+				}
 			}
 			
 			//从列表中移除一项,输入的参数为数据.如果有要删除的则返回删除后的数据,如果没有则返回false
 			this.remove = function(element){
-				let nodeAll = head
+				let current = head
 				console.log(head)
-				while(nodeAll){
-					if(nodeAll.element === element){
+				while(current){
+					if(current.element === element){
 						var a = head
 						// a = null
 						head = head.next
@@ -55,15 +85,15 @@
 						console.log(a.next)
 						return 
 					}else{
-						if(nodeAll.next.element === element){
-							console.log(nodeAll)
-							var a = nodeAll.next
-							nodeAll.next = nodeAll.next.next
+						if(current.next.element === element){
+							console.log(current)
+							var a = current.next
+							current.next = current.next.next
 							a = null
 							console.log(a)
 							return 		
 						}else{
-							nodeAll = nodeAll.next
+							current = current.next
 						}
 					}
 				}
@@ -73,16 +103,55 @@
 			//从列表的特定位置移除一项
 			this.removeAt = function(position){
 				
+				//检查越界
+				if (position>-1 && position<length) {
+					
+					let current = head
+					let previous;
+					let index = 0;
+					
+					//移除第一项
+					if(position === 0){
+						head = current.next;
+					}else{
+						while(index++<position){
+							previous = current;
+							current = previous.next
+						}
+						previous.next = current.next;
+					}
+					
+					length--;
+					
+					return current.element
+					
+				} else{
+					return null
+				}
 			}
 			
 			//返回元素在列表中的索引.如果列表中没有该元素就返回-1,.
 			this.indexOf = function(element){
+				let nodeAll = head
+				let size = -1
 				
+				if(!nodeAll){
+					return size;
+				}else{					
+					while(nodeAll){
+						size++;
+						if(nodeAll.element===element){
+							return size
+						}		
+						// console.log(nodeAll.element)
+						nodeAll = nodeAll.next
+					}
+				}
 			}
 			
 			//判断元素是否为空，如果链表中不包含任何元素,返回true,如果链表长度大于0则返回false
 			this.isEmpty = function(){
-				
+				return length===0;
 			}
 			
 			//返回链表包含的元素个数.与数组的length属性类似.
@@ -93,7 +162,7 @@
 			//返回全部数据
 			this.print = function(){
 				
-				console.log(head)
+				// console.log(head)
 				
 				let nodeAll = head
 				
@@ -105,6 +174,11 @@
 					console.log(nodeAll.element)
 					nodeAll = nodeAll.next
 				}
+			}
+			
+			//getHead
+			this.getHead = function(){
+				return head;
 			}
 		}
 		
@@ -119,10 +193,12 @@
 		linkList.append(7)
 		linkList.append(8)
 		
-		linkList.remove(1)
+		linkList.insert(5,10)
+		// console.log(linkList.removeAt(1))
 		console.log(linkList)
 		console.log(linkList.size())
 		linkList.print()
+		console.log(linkList.indexOf(10))
 	</script>
 	
 </body>
